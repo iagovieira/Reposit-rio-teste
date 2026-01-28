@@ -14,6 +14,7 @@ This project aims to enable people to quickly publish a simple website that can 
 * One critical request, inlined CSS
 * [Netlify CMS](https://www.netlifycms.org/) for content editing
 * Offline support with service worker
+* **Invoice Recognition System**: OCR-powered invoice processing with automatic email delivery (see [INVOICE_SYSTEM.md](INVOICE_SYSTEM.md))
 
 ## Getting Started
 
@@ -76,8 +77,38 @@ The available settings are:
             <td>your main contact phone number (optional)</td>
             <td>+01 23 456 789 00</td>
             <td>N/A</td>
-        </tr> 
-    </tbody>   
+        </tr>
+        <tr>
+            <td><code>SMTP_HOST</code></td>
+            <td>SMTP server hostname (for invoice system)</td>
+            <td>smtp.gmail.com</td>
+            <td>smtp.gmail.com</td>
+        </tr>
+        <tr>
+            <td><code>SMTP_PORT</code></td>
+            <td>SMTP server port (for invoice system)</td>
+            <td>587</td>
+            <td>587</td>
+        </tr>
+        <tr>
+            <td><code>SMTP_USER</code></td>
+            <td>SMTP username/email (for invoice system)</td>
+            <td>your-email@gmail.com</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td><code>SMTP_PASS</code></td>
+            <td>SMTP password/app password (for invoice system)</td>
+            <td>your-app-password</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td><code>SMTP_FROM</code></td>
+            <td>From email address (for invoice system)</td>
+            <td>your-email@gmail.com</td>
+            <td>N/A</td>
+        </tr>
+    </tbody>
 </table>
 
 ## One-Click Deployment

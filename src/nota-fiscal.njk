@@ -1,0 +1,91 @@
+---
+title: Envio de Nota Fiscal
+layout: base
+---
+
+<main class="invoice-container">
+  <h1>Reconhecimento de Nota Fiscal</h1>
+
+  <div class="upload-section">
+    <div class="upload-box" id="uploadBox">
+      <input type="file" id="invoiceFile" accept="image/*" class="file-input">
+      <label for="invoiceFile" class="upload-label">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <span>Clique ou arraste uma foto da nota fiscal</span>
+        <small>Formatos aceitos: JPG, PNG, WebP</small>
+      </label>
+    </div>
+
+    <div id="previewSection" class="preview-section" style="display: none;">
+      <h2>Imagem Carregada</h2>
+      <img id="previewImage" alt="Preview da nota fiscal">
+      <button type="button" id="processBtn" class="btn btn-primary">Processar Nota Fiscal</button>
+    </div>
+  </div>
+
+  <div id="loadingSection" class="loading-section" style="display: none;">
+    <div class="spinner"></div>
+    <p>Processando nota fiscal...</p>
+    <small>Isso pode levar alguns segundos</small>
+  </div>
+
+  <div id="formSection" class="form-section" style="display: none;">
+    <h2>Dados Reconhecidos</h2>
+
+    <form id="invoiceForm">
+      <div class="form-group">
+        <label for="valor">Valor *</label>
+        <input type="text" id="valor" name="valor" required placeholder="R$ 0,00">
+        <small class="help-text">Valor reconhecido automaticamente</small>
+      </div>
+
+      <div class="form-group">
+        <label for="data">Data *</label>
+        <input type="date" id="data" name="data" required>
+        <small class="help-text">Data reconhecida automaticamente</small>
+      </div>
+
+      <div class="form-group">
+        <label for="estabelecimento">Estabelecimento *</label>
+        <input type="text" id="estabelecimento" name="estabelecimento" required>
+        <small class="help-text">Nome do estabelecimento reconhecido</small>
+      </div>
+
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ex: Compra de materiais de escritório">
+      </div>
+
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" name="descricao" rows="4" placeholder="Adicione detalhes adicionais sobre esta despesa..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" id="submitBtn" class="btn btn-primary">Enviar para Financeiro</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="successSection" class="success-section" style="display: none;">
+    <div class="success-icon">✓</div>
+    <h2>Email Enviado com Sucesso!</h2>
+    <p>As informações da nota fiscal foram enviadas para <strong>financeiro@erural.net</strong></p>
+    <button type="button" id="newInvoiceBtn" class="btn btn-primary">Enviar Nova Nota Fiscal</button>
+  </div>
+
+  <div id="errorSection" class="error-section" style="display: none;">
+    <div class="error-icon">✕</div>
+    <h2>Erro ao Processar</h2>
+    <p id="errorMessage"></p>
+    <button type="button" id="retryBtn" class="btn btn-primary">Tentar Novamente</button>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+<script src="/static/scripts/invoice-ocr.js"></script>
